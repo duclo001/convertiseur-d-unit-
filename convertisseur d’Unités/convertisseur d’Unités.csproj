@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <RootNamespace>convertisseur_d_Unités</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="image\icons8-longueur-80.png" />
+    <None Remove="image\icons8-poids-48.png" />
+    <None Remove="image\icons8-température-64.png" />
+    <None Remove="image\return.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignColors" Version="5.3.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="image\icons8-longueur-80.png" />
+    <Resource Include="image\icons8-poids-48.png" />
+    <Resource Include="image\icons8-température-64.png" />
+    <Resource Include="image\return.png" />
+  </ItemGroup>
+
+</Project>

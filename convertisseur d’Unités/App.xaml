@@ -1,0 +1,146 @@
+﻿<Application x:Class="convertisseur_d_Unités.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:convertisseur_d_Unités"
+             StartupUri="MainWindow.xaml">
+
+    <!-- Ressources globales de l'application (styles, thèmes, templates) -->
+    <!-- Accessibles dans toutes les fenêtres et contrôles de l'application -->
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!-- ========================================== -->
+            <!-- DICTIONNAIRES FUSIONNÉS (Thèmes externes) -->
+            <!-- ========================================== -->
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- Configuration du thème Material Design -->
+                <!-- BaseTheme="Light" : thème clair (alternative: "Dark") -->
+                <!-- PrimaryColor="DeepPurple" : couleur principale (barres, boutons actifs) -->
+                <!-- SecondaryColor="Lime" : couleur d'accentuation (focus, survol) -->
+                <materialDesign:BundledTheme BaseTheme="Light" 
+                                         PrimaryColor="DeepPurple" 
+                                         SecondaryColor="Lime" />
+
+                <!-- Importe les styles par défaut de Material Design v2 -->
+                <!-- Fournit l'apparence moderne pour tous les contrôles standards -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- ========================================== -->
+            <!-- STYLES PERSONNALISÉS -->
+            <!-- ========================================== -->
+
+            <!-- Styles du bandeau d’en-tête (Primary/Secondary) -->
+            <Style x:Key="HeaderBannerBorderStyle" TargetType="Border">
+                <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="Padding" Value="8" />
+                <Setter Property="Margin" Value="0,0,0,8" />
+            </Style>
+
+            <Style x:Key="HeaderBannerTitleTextStyle" TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignTextBlock}">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="Margin" Value="8,0" />
+            </Style>
+
+            <Style x:Key="HeaderBannerAccentDotStyle" TargetType="Border">
+                <Setter Property="Background" Value="{DynamicResource SecondaryAccentBrush}" />
+                <Setter Property="Width" Value="24" />
+                <Setter Property="Height" Value="24" />
+                <Setter Property="CornerRadius" Value="12" />
+            </Style>
+
+            <!-- Style pour toutes les cartes Material Design (Card) -->
+            <Style TargetType="materialDesign:Card">
+                <!-- Bordure violette autour de chaque carte -->
+                <Setter Property="BorderBrush" Value="Purple"/>
+                <!-- Épaisseur de la bordure : 1 pixel -->
+                <Setter Property="BorderThickness" Value="1"/>
+                <!-- Marge externe de 2 pixels (espacement entre éléments) -->
+                <Setter Property="Margin" Value="2"/>
+                <!-- Marge interne de 2 pixels (espacement du contenu) -->
+                <Setter Property="Padding" Value="2"/>
+            </Style>
+
+            <!-- Style pour tous les boutons -->
+            <!-- BasedOn : hérite du style Material Design plat (sans relief) -->
+            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+                <!-- Largeur fixe de 120 pixels -->
+                <Setter Property="Width" Value="120"/>
+                <!-- Hauteur fixe de 60 pixels -->
+                <Setter Property="Height" Value="60"/>
+                <!-- Marge externe de 2 pixels -->
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+
+            <!-- Style pour tous les blocs de texte (TextBlock) -->
+            <!-- Hérite du style Material Design de base -->
+            <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignTextBlock}">
+                <!-- Centre le texte horizontalement dans son conteneur -->
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <!-- Marge externe de 2 pixels -->
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+
+            <!-- Style pour tous les panneaux d'empilement (StackPanel) -->
+            <Style TargetType="StackPanel">
+                <!-- Centre le panneau horizontalement -->
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <!-- Centre le panneau verticalement -->
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <!-- Largeur fixe de 300 pixels pour uniformiser l'interface -->
+                <Setter Property="Width" Value="300"/>
+            </Style>
+
+            <!-- Style pour toutes les listes déroulantes (ComboBox) -->
+            <!-- Hérite du style Material Design standard -->
+            <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignComboBox}">
+                <!-- Largeur fixe de 100 pixels -->
+                <Setter Property="Width" Value="100"/>
+                <!-- Marge externe de 2 pixels -->
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+
+            <!-- Style pour toutes les étiquettes (Label) -->
+            <Style TargetType="Label">
+                <!-- Largeur fixe de 120 pixels -->
+                <Setter Property="Width" Value="120"/>
+            </Style>
+
+            <!-- Style pour toutes les zones de texte (TextBox) -->
+            <!-- Hérite du style Material Design de base -->
+            <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+                <!-- Largeur fixe de 200 pixels -->
+                <Setter Property="Width" Value="200"/>
+                <!-- Marge externe de 2 pixels -->
+                <Setter Property="Margin" Value="2"/>
+                <!-- Centre le texte saisi dans la TextBox -->
+                <Setter Property="TextAlignment" Value="Center"/>
+            </Style>
+
+            <!-- Style pour toutes les images (Image) -->
+            <Style TargetType="Image">
+                <!-- Largeur fixe de 48 pixels -->
+                <Setter Property="Width" Value="48"/>
+                <!-- Hauteur fixe de 48 pixels -->
+                <Setter Property="Height" Value="48"/>
+                <!-- Marge externe de 2 pixels -->
+                <Setter Property="Margin" Value="2"/>
+                <!-- Alignement horizontal centré -->
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+
+            <!--style explicte pour les grid-->
+            <Style x:Key="MargeGrid" TargetType="Grid">
+                <Setter Property="Margin" Value="16" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>
